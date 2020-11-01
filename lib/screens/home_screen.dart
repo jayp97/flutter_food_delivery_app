@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/models/food_model.dart';
+import 'package:flutter_food_delivery_app/widgets/food_carousel.dart';
 import 'package:flutter_food_delivery_app/widgets/home_app_bar.dart';
 import 'package:flutter_food_delivery_app/widgets/menuBar_carousel.dart';
-import 'package:flutter_food_delivery_app/widgets/pizza_carousel.dart';
-import 'package:flutter_food_delivery_app/widgets/burger_carousel.dart';
-import 'package:flutter_food_delivery_app/widgets/fries_carousel.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_food_delivery_app/models/data_model.dart';
 import 'package:flutter_food_delivery_app/constants.dart';
@@ -18,16 +17,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    Widget foodCarousel() {
+    List<FoodModel> foodCarousel() {
       if (Provider.of<Data>(context).selectedFood == Food.all) {
         print(Provider.of<Data>(context).selectedFood);
-        return PizzaCarousel();
+        return pizzaList;
       } else if (Provider.of<Data>(context).selectedFood == Food.pizza) {
-        return PizzaCarousel();
+        return pizzaList;
       } else if (Provider.of<Data>(context).selectedFood == Food.burger) {
-        return BurgerCarousel();
+        return burgerList;
       } else
-        return FriesCarousel();
+        return friesList;
     }
 
     return Scaffold(
@@ -38,7 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
           HomeSearchBar(),
           MenuBarCarousel(),
           SizedBox(height: 15.0),
-          foodCarousel(),
+          // foodCarousel(),
+          FoodCarousel(foodList: foodCarousel())
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
