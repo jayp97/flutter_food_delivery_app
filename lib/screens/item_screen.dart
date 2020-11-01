@@ -88,10 +88,13 @@ class ItemScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   child: Hero(
                     tag: 'food$foodIndex',
-                    child: Image(
-                      width: 280,
-                      image: AssetImage(food.imageUrl),
-                      fit: BoxFit.contain,
+                    child: SizedBox(
+                      width: 270.0,
+                      height: 270.0,
+                      child: Image(
+                        image: AssetImage(food.imageUrl),
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
