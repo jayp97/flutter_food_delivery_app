@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/screens/checkout_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'float_button.dart';
 
@@ -15,9 +16,20 @@ class HomeAppBar extends StatelessWidget {
             FontAwesomeIcons.bars,
             size: 30.0,
           ),
-          FloatButton(
-            color: Theme.of(context).primaryColor,
-            icon: Icon(Icons.shopping_basket),
+          Padding(
+            padding: EdgeInsets.only(right: 5.0),
+            child: FloatButton(
+              icon: Icon(Icons.shopping_bag_outlined),
+              color: Theme.of(context).primaryColor,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CheckOutScreen(),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
