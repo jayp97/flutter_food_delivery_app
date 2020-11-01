@@ -15,20 +15,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  List<FoodModel> foodCarousel() {
+    if (Provider.of<Data>(context).selectedFood == Food.all) {
+      print(Provider.of<Data>(context).selectedFood);
+      return pizzaList;
+    } else if (Provider.of<Data>(context).selectedFood == Food.pizza) {
+      return pizzaList;
+    } else if (Provider.of<Data>(context).selectedFood == Food.burger) {
+      return burgerList;
+    } else
+      return friesList;
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<FoodModel> foodCarousel() {
-      if (Provider.of<Data>(context).selectedFood == Food.all) {
-        print(Provider.of<Data>(context).selectedFood);
-        return pizzaList;
-      } else if (Provider.of<Data>(context).selectedFood == Food.pizza) {
-        return pizzaList;
-      } else if (Provider.of<Data>(context).selectedFood == Food.burger) {
-        return burgerList;
-      } else
-        return friesList;
-    }
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -42,6 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Theme.of(context).primaryColor,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.mail),
