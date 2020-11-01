@@ -10,8 +10,9 @@ import 'package:flutter_food_delivery_app/models/ingredients_model.dart';
 class ItemScreen extends StatefulWidget {
   final FoodModel food;
   final int foodIndex;
+  final double price;
 
-  ItemScreen({this.food, this.foodIndex});
+  ItemScreen({this.food, this.foodIndex, this.price});
 
   @override
   _ItemScreenState createState() => _ItemScreenState();
@@ -95,6 +96,12 @@ class _ItemScreenState extends State<ItemScreen> {
                       style: TextStyle(fontSize: 16.0),
                     ),
                     SizedBox(height: 20.0),
+                    Text(
+                      '£${widget.food.price.toStringAsFixed(2)}',
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(height: 8.0),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Hero(
@@ -150,7 +157,7 @@ class _ItemScreenState extends State<ItemScreen> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.only(left: 25.0, top: 50.0, bottom: 20.0),
+                        EdgeInsets.only(left: 25.0, top: 35.0, bottom: 20.0),
                     child: Text(
                       'Ingredients',
                       style: TextStyle(
@@ -196,19 +203,17 @@ class _ItemScreenState extends State<ItemScreen> {
             ],
           ),
           Positioned(
-            top: 495.0,
+            top: 523.0,
             left: 155.0,
             child: QuantityButton(
               onTapDown: () {
                 setState(() {
                   orderQuantity == 1 ? orderQuantity = 1 : orderQuantity--;
-                  print(orderQuantity);
                 });
               },
               onTapUp: () {
                 setState(() {
                   orderQuantity++;
-                  print(orderQuantity);
                 });
               },
               quantity: orderQuantity,

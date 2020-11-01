@@ -28,6 +28,7 @@ class _FoodCarouselState extends State<FoodCarousel> {
                   builder: (context) => ItemScreen(
                     food: food,
                     foodIndex: index,
+                    price: food.price,
                   ),
                 ),
               );
@@ -84,7 +85,7 @@ class _FoodCarouselState extends State<FoodCarousel> {
                             Text(food.description,
                                 style: TextStyle(
                                     color: Colors.black26,
-                                    fontSize: 18.0,
+                                    fontSize: 16.0,
                                     fontWeight: FontWeight.w500)),
                           ],
                         ),
@@ -92,7 +93,7 @@ class _FoodCarouselState extends State<FoodCarousel> {
                         Row(
                           children: <Widget>[
                             Text(
-                              '£${food.price}',
+                              '£${food.price.toStringAsFixed(2)}',
                               style: TextStyle(
                                   fontSize: 18.0,
                                   letterSpacing: 1.0,
