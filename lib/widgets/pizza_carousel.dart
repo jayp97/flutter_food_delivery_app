@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_food_delivery_app/models/pizza_model.dart';
 import 'package:flutter_food_delivery_app/screens/item_screen.dart';
+import 'package:flutter_food_delivery_app/models/food_model.dart';
 
 class PizzaCarousel extends StatefulWidget {
   @override
@@ -15,15 +15,15 @@ class _PizzaCarouselState extends State<PizzaCarousel> {
         padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
         itemCount: pizzaList.length,
         itemBuilder: (BuildContext context, int index) {
-          Pizza pizza = pizzaList[index];
+          FoodModel pizza = pizzaList[index];
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ItemScreen(
-                    pizza: pizza,
-                    pizzaIndex: index,
+                    food: pizza,
+                    foodIndex: index,
                   ),
                 ),
               );

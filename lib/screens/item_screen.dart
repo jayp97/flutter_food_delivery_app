@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_food_delivery_app/constants.dart';
-import 'package:flutter_food_delivery_app/models/pizza_model.dart';
+import 'package:flutter_food_delivery_app/models/food_model.dart';
 import 'package:flutter_food_delivery_app/screens/checkout_screen.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button_ingredients.dart';
@@ -8,10 +7,10 @@ import 'package:flutter_food_delivery_app/widgets/size_button.dart';
 import 'package:flutter_food_delivery_app/models/ingredients_model.dart';
 
 class ItemScreen extends StatelessWidget {
-  final Pizza pizza;
-  final int pizzaIndex;
+  final FoodModel food;
+  final int foodIndex;
 
-  ItemScreen({this.pizza, this.pizzaIndex});
+  ItemScreen({this.food, this.foodIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -76,22 +75,22 @@ class ItemScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20.0),
                 Text(
-                  pizza.name,
+                  food.name,
                   style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20.0),
                 Text(
-                  pizza.description,
+                  food.description,
                   style: TextStyle(fontSize: 16.0),
                 ),
                 SizedBox(height: 20.0),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Hero(
-                    tag: 'food$pizzaIndex',
+                    tag: 'food$foodIndex',
                     child: Image(
                       width: 280,
-                      image: AssetImage(pizza.imageUrl),
+                      image: AssetImage(food.imageUrl),
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -147,30 +146,22 @@ class ItemScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
                 child: Row(
-                  // crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // FloatButtonIngredients(
-                    //   color: ingredientList[0].backgroundColor,
-                    //   image: Image(
-                    //     image: AssetImage(ingredientList[0].imageUrl),
-                    //   ),
-                    // ),
                     Expanded(
                       child: SizedBox(
                         height: 60.0,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: pizza.toppings.length,
-                          // shrinkWrap: true,
+                          itemCount: food.toppings.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
                               padding: EdgeInsets.only(left: 15.0, right: 15.0),
                               child: FloatButtonIngredients(
-                                color: ingredientSelector(pizza.toppings[index])
+                                color: ingredientSelector(food.toppings[index])
                                     .backgroundColor,
                                 image: Image(
                                   image: AssetImage(
-                                      ingredientSelector(pizza.toppings[index])
+                                      ingredientSelector(food.toppings[index])
                                           .imageUrl),
                                 ),
                               ),
