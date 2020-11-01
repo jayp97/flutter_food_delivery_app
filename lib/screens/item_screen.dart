@@ -6,6 +6,7 @@ import 'package:flutter_food_delivery_app/widgets/float_button_ingredients.dart'
 import 'package:flutter_food_delivery_app/widgets/quantity_button.dart';
 import 'package:flutter_food_delivery_app/widgets/size_button.dart';
 import 'package:flutter_food_delivery_app/models/ingredients_model.dart';
+import 'package:flutter_food_delivery_app/constants.dart';
 
 class ItemScreen extends StatefulWidget {
   final FoodModel food;
@@ -20,6 +21,7 @@ class ItemScreen extends StatefulWidget {
 
 class _ItemScreenState extends State<ItemScreen> {
   int orderQuantity = 1;
+  mealSize currentSize = mealSize.s;
 
   Ingredients ingredientSelector(String foodIngredient) {
     Ingredients returnItem;
@@ -138,20 +140,44 @@ class _ItemScreenState extends State<ItemScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizeButton(
+                        sizeOfMeal: mealSize.s,
+                        selectedSizeOfMeal: currentSize,
+                        onTap: () {
+                          setState(() {
+                            currentSize = mealSize.s;
+                          });
+                        },
                         size: 'S',
-                        color: Colors.white,
                       ),
                       SizeButton(
+                        sizeOfMeal: mealSize.r,
+                        selectedSizeOfMeal: currentSize,
+                        onTap: () {
+                          setState(() {
+                            currentSize = mealSize.r;
+                          });
+                        },
                         size: 'R',
-                        color: Colors.white,
                       ),
                       SizeButton(
+                        sizeOfMeal: mealSize.m,
+                        selectedSizeOfMeal: currentSize,
+                        onTap: () {
+                          setState(() {
+                            currentSize = mealSize.m;
+                          });
+                        },
                         size: 'M',
-                        color: Colors.white,
                       ),
                       SizeButton(
+                        sizeOfMeal: mealSize.l,
+                        selectedSizeOfMeal: currentSize,
+                        onTap: () {
+                          setState(() {
+                            currentSize = mealSize.l;
+                          });
+                        },
                         size: 'L',
-                        color: Colors.white,
                       ),
                     ],
                   ),
