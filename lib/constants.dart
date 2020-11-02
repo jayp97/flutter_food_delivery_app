@@ -4,4 +4,4 @@ enum Food { all, pizza, burger, fries }
 
 enum selectedFoodItem { all, pizza, burger, fries }
 
-enum mealSize { s, r, m, l }
+enum mealSize { small, regular, medium, large }

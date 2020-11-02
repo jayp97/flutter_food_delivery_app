@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/models/food_model.dart';
 import 'package:flutter_food_delivery_app/screens/checkout_screen.dart';
+import 'package:flutter_food_delivery_app/widgets/BottomBar.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button_ingredients.dart';
 import 'package:flutter_food_delivery_app/widgets/quantity_button.dart';
 import 'package:flutter_food_delivery_app/widgets/size_button.dart';
 import 'package:flutter_food_delivery_app/models/ingredients_model.dart';
 import 'package:flutter_food_delivery_app/constants.dart';
+import 'package:flutter_food_delivery_app/models/data_model.dart';
+import 'package:provider/provider.dart';
 
 class ItemScreen extends StatefulWidget {
   final FoodModel food;
@@ -21,7 +24,7 @@ class ItemScreen extends StatefulWidget {
 
 class _ItemScreenState extends State<ItemScreen> {
   int orderQuantity = 1;
-  mealSize currentSize = mealSize.s;
+  mealSize currentSize = mealSize.small;
 
   Ingredients ingredientSelector(String foodIngredient) {
     Ingredients returnItem;
@@ -140,41 +143,41 @@ class _ItemScreenState extends State<ItemScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizeButton(
-                        sizeOfMeal: mealSize.s,
+                        sizeOfMeal: mealSize.small,
                         selectedSizeOfMeal: currentSize,
                         onTap: () {
                           setState(() {
-                            currentSize = mealSize.s;
+                            currentSize = mealSize.small;
                           });
                         },
                         size: 'S',
                       ),
                       SizeButton(
-                        sizeOfMeal: mealSize.r,
+                        sizeOfMeal: mealSize.regular,
                         selectedSizeOfMeal: currentSize,
                         onTap: () {
                           setState(() {
-                            currentSize = mealSize.r;
+                            currentSize = mealSize.regular;
                           });
                         },
                         size: 'R',
                       ),
                       SizeButton(
-                        sizeOfMeal: mealSize.m,
+                        sizeOfMeal: mealSize.medium,
                         selectedSizeOfMeal: currentSize,
                         onTap: () {
                           setState(() {
-                            currentSize = mealSize.m;
+                            currentSize = mealSize.medium;
                           });
                         },
                         size: 'M',
                       ),
                       SizeButton(
-                        sizeOfMeal: mealSize.l,
+                        sizeOfMeal: mealSize.large,
                         selectedSizeOfMeal: currentSize,
                         onTap: () {
                           setState(() {
-                            currentSize = mealSize.l;
+                            currentSize = mealSize.large;
                           });
                         },
                         size: 'L',
@@ -247,14 +250,15 @@ class _ItemScreenState extends State<ItemScreen> {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.only(bottom: 5.0),
-        alignment: Alignment.center,
-        height: 80.0,
-        decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-        child: Text(
-          'Add to Cart',
-          style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w500),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          Provider.of<Data>(context, listen: false).updateOrderModel(
+              mealSize: currentSize,
+              food: widget.food,
+              orderQuantity: orderQuantity);
+        },
+        child: BottomBar(
+          title: "Add to Cart",
         ),
       ),
     );
