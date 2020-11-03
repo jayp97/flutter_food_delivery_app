@@ -24,7 +24,7 @@ class CheckOutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             height: 60.0,
@@ -52,48 +52,50 @@ class CheckOutScreen extends StatelessWidget {
                   fontSize: 26.0,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 5.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                        offset: Offset(0, 2),
-                      )
-                    ],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(4.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Total Cost",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        Text(
-                          '£${totalCost().toStringAsFixed(2)}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
-          SizedBox(
-            height: 30.0,
+          SizedBox(height: 15.0),
+          Padding(
+            padding: EdgeInsets.only(left: 5.0),
+            child: Container(
+              width: 190.0,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(15.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: Offset(0, 2),
+                  )
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Total Cost: ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    Text(
+                      '£${totalCost().toStringAsFixed(2)}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
+          SizedBox(height: 15.0),
           OrderSummaryBuilder(),
         ],
       ),
