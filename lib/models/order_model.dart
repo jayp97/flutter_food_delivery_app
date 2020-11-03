@@ -6,9 +6,11 @@ class OrderModel {
   mealSize sizeOfMeal;
   FoodModel food;
   int orderQuantity;
+  double mealPrice;
 
   OrderModel(
       {@required this.sizeOfMeal,
       @required this.orderQuantity,
-      @required this.food});
+      @required this.food,
+      @required this.mealPrice});
 }

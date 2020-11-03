@@ -26,6 +26,21 @@ class ItemScreen extends StatefulWidget {
 class _ItemScreenState extends State<ItemScreen> {
   int orderQuantity = 1;
   mealSize currentSize = mealSize.small;
+  double mealPrice;
+
+  //A function to scale the price of the item based on the size of meal
+  double priceScalar() {
+    if (currentSize == mealSize.small) {
+      mealPrice = widget.price;
+    } else if (currentSize == mealSize.regular) {
+      mealPrice = widget.price * 1.2;
+    } else if (currentSize == mealSize.medium) {
+      mealPrice = widget.price * 1.4;
+    } else if (currentSize == mealSize.large) {
+      mealPrice = widget.price * 1.5;
+    }
+    return mealPrice;
+  }
 
   Ingredients ingredientSelector(String foodIngredient) {
     Ingredients returnItem;
@@ -103,7 +118,7 @@ class _ItemScreenState extends State<ItemScreen> {
                     ),
                     SizedBox(height: 20.0),
                     Text(
-                      '£${widget.food.price.toStringAsFixed(2)}',
+                      '£${priceScalar().toStringAsFixed(2)}',
                       style: TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.w700),
                     ),
@@ -254,9 +269,11 @@ class _ItemScreenState extends State<ItemScreen> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           Provider.of<Data>(context, listen: false).updateOrderModel(
-              mealSize: currentSize,
-              food: widget.food,
-              orderQuantity: orderQuantity);
+            mealSize: currentSize,
+            food: widget.food,
+            orderQuantity: orderQuantity,
+            mealPrice: mealPrice,
+          );
         },
         child: BottomBar(
           title: "Add to Cart",

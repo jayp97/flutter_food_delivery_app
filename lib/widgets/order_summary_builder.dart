@@ -88,7 +88,7 @@ class OrderSummaryBuilder extends StatelessWidget {
                           ),
                           SizedBox(height: 10.0),
                           Text(
-                            '£${(order.orderQuantity * order.food.price).toStringAsFixed(2)}',
+                            '£${(order.orderQuantity * order.mealPrice).toStringAsFixed(2)}',
                             style: TextStyle(
                                 // backgroundColor:
                                 //     Theme.of(context).primaryColor,

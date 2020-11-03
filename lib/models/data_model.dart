@@ -25,12 +25,16 @@ class Data extends ChangeNotifier {
   }
 
   void updateOrderModel(
-      {mealSize mealSize, int orderQuantity, FoodModel food}) {
+      {mealSize mealSize,
+      int orderQuantity,
+      FoodModel food,
+      double mealPrice}) {
     orderList.add(
       OrderModel(
         sizeOfMeal: mealSize,
         orderQuantity: orderQuantity,
         food: food,
+        mealPrice: mealPrice,
       ),
     );
     notifyListeners();

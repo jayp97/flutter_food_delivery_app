@@ -3,10 +3,8 @@ import 'package:flutter_food_delivery_app/widgets/BottomBar.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button.dart';
 import 'package:flutter_food_delivery_app/models/data_model.dart';
 import 'package:flutter_food_delivery_app/widgets/order_summary_builder.dart';
-import 'package:flutter_food_delivery_app/widgets/quantity_button.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_food_delivery_app/models/order_model.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 
 class CheckOutScreen extends StatelessWidget {
   @override
@@ -15,7 +13,7 @@ class CheckOutScreen extends StatelessWidget {
       double itemTotal;
       double overallCost = 0;
       for (OrderModel order in Provider.of<Data>(context).orderList) {
-        itemTotal = order.orderQuantity * order.food.price;
+        itemTotal = order.orderQuantity * order.mealPrice;
         overallCost += itemTotal;
       }
       return overallCost;
