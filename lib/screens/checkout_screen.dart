@@ -10,6 +10,16 @@ import 'package:enum_to_string/enum_to_string.dart';
 class CheckOutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double totalCost() {
+      double itemTotal;
+      double overallCost = 0;
+      for (OrderModel order in Provider.of<Data>(context).orderList) {
+        itemTotal = order.orderQuantity * order.food.price;
+        overallCost += itemTotal;
+      }
+      return overallCost;
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -41,6 +51,43 @@ class CheckOutScreen extends StatelessWidget {
                   fontSize: 26.0,
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 5,
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(4.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Total Cost",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        Text(
+                          '£${totalCost().toStringAsFixed(2)}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
           SizedBox(
