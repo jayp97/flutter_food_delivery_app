@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/screens/checkout_screen.dart';
+import 'package:flutter_food_delivery_app/widgets/shopping_cart_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'float_button.dart';
 
@@ -17,8 +18,8 @@ class HomeAppBar extends StatelessWidget {
             size: 30.0,
           ),
           Padding(
-            padding: EdgeInsets.only(right: 5.0),
-            child: FloatButton(
+            padding: EdgeInsets.only(right: 1.0),
+            child: ShoppingCartButton(
               icon: Icon(Icons.shopping_bag_outlined),
               color: Theme.of(context).primaryColor,
               onTap: () {

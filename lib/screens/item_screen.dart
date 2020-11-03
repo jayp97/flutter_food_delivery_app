@@ -5,6 +5,7 @@ import 'package:flutter_food_delivery_app/widgets/BottomBar.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button_ingredients.dart';
 import 'package:flutter_food_delivery_app/widgets/quantity_button.dart';
+import 'package:flutter_food_delivery_app/widgets/shopping_cart_button.dart';
 import 'package:flutter_food_delivery_app/widgets/size_button.dart';
 import 'package:flutter_food_delivery_app/models/ingredients_model.dart';
 import 'package:flutter_food_delivery_app/constants.dart';
@@ -58,7 +59,7 @@ class _ItemScreenState extends State<ItemScreen> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 50.0),
+                    SizedBox(height: 45.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -74,7 +75,7 @@ class _ItemScreenState extends State<ItemScreen> {
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 30.0),
-                          child: FloatButton(
+                          child: ShoppingCartButton(
                             icon: Icon(Icons.shopping_bag_outlined),
                             color: Theme.of(context).primaryColor,
                             onTap: () {

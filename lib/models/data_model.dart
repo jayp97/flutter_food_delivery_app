@@ -7,16 +7,16 @@ class Data extends ChangeNotifier {
   Food selectedFood = Food.pizza;
 
   List<OrderModel> orderList = [
-    OrderModel(
-      sizeOfMeal: mealSize.small,
-      orderQuantity: 1,
-      food: pizzaList[0],
-    ),
-    OrderModel(
-      sizeOfMeal: mealSize.large,
-      orderQuantity: 2,
-      food: pizzaList[1],
-    ),
+    // OrderModel(
+    //   sizeOfMeal: mealSize.small,
+    //   orderQuantity: 1,
+    //   food: pizzaList[0],
+    // ),
+    // OrderModel(
+    //   sizeOfMeal: mealSize.large,
+    //   orderQuantity: 2,
+    //   food: pizzaList[1],
+    // ),
   ];
 
   void changeFood(Food newFood) {
