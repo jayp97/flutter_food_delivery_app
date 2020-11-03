@@ -46,6 +46,11 @@ class Data extends ChangeNotifier {
     orderList[index].orderQuantity--;
     notifyListeners();
   }
+
+  void removeOrderItem(int index) {
+    orderList.removeAt(index);
+    notifyListeners();
+  }
 }
 
 //List of FoodList[index] e.g PizzaList[1], order Quantity, and meal size.
