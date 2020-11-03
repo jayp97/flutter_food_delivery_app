@@ -266,7 +266,8 @@ class _ItemScreenState extends State<ItemScreen> {
           )
         ],
       ),
-      bottomNavigationBar: GestureDetector(
+      bottomNavigationBar: BottomBar(
+        title: "Add to Cart",
         onTap: () {
           Provider.of<Data>(context, listen: false).updateOrderModel(
             mealSize: currentSize,
@@ -275,9 +276,6 @@ class _ItemScreenState extends State<ItemScreen> {
             mealPrice: mealPrice,
           );
         },
-        child: BottomBar(
-          title: "Add to Cart",
-        ),
       ),
     );
   }
