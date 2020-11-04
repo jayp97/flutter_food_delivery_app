@@ -17,6 +17,7 @@ class HomeScreenTitle extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
+                // fontFamily: 'Itim',
               ),
             ),
           ),

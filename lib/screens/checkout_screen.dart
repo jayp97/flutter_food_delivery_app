@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/screens/dummy_screen.dart';
 import 'package:flutter_food_delivery_app/widgets/BottomBar.dart';
+import 'package:flutter_food_delivery_app/widgets/app_logo.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button.dart';
 import 'package:flutter_food_delivery_app/models/data_model.dart';
 import 'package:flutter_food_delivery_app/widgets/order_summary_builder.dart';
@@ -98,6 +100,14 @@ class CheckOutScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomBar(
+        // onTap: () {
+        //   Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => DummyScreen(),
+        //     ),
+        //   );
+        // },
         title: "Place Order",
       ),
     );

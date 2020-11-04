@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/models/food_model.dart';
 import 'package:flutter_food_delivery_app/screens/checkout_screen.dart';
 import 'package:flutter_food_delivery_app/widgets/BottomBar.dart';
+import 'package:flutter_food_delivery_app/widgets/app_logo.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button.dart';
 import 'package:flutter_food_delivery_app/widgets/float_button_ingredients.dart';
 import 'package:flutter_food_delivery_app/widgets/quantity_button.dart';
@@ -88,6 +89,7 @@ class _ItemScreenState extends State<ItemScreen> {
                             },
                           ),
                         ),
+                        AppLogo(padding: 20.0),
                         Padding(
                           padding: EdgeInsets.only(right: 30.0),
                           child: ShoppingCartButton(
@@ -202,7 +204,7 @@ class _ItemScreenState extends State<ItemScreen> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.only(left: 25.0, top: 35.0, bottom: 20.0),
+                        EdgeInsets.only(left: 25.0, top: 35.0, bottom: 13.0),
                     child: Text(
                       'Ingredients',
                       style: TextStyle(
@@ -248,7 +250,7 @@ class _ItemScreenState extends State<ItemScreen> {
             ],
           ),
           Positioned(
-            top: 523.0,
+            top: 537.0,
             left: 155.0,
             child: QuantityButton(
               onTapDown: () {
