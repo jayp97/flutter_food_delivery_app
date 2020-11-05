@@ -19,6 +19,29 @@ class Data extends ChangeNotifier {
     // ),
   ];
 
+  List<FoodModel> filteredFoodItems = [];
+
+  addToFilteredFoodItems(FoodModel foodItem) {
+    filteredFoodItems.add(foodItem);
+    notifyListeners();
+  }
+
+  void clearFilteredFoodItems() {
+    filteredFoodItems.clear();
+    notifyListeners();
+  }
+
+  void filteredFoodListMaker(String text) {
+    for (FoodModel item in foodList) {
+      if (item.name.toLowerCase().contains(text.toLowerCase()) ||
+          text.toLowerCase().contains(item.name.toLowerCase()) ||
+          item.key.contains(text)) {
+        addToFilteredFoodItems(item);
+        notifyListeners();
+      }
+    }
+  }
+
   void changeFood(Food newFood) {
     selectedFood = newFood;
     notifyListeners();
@@ -56,6 +79,3 @@ class Data extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-//List of FoodList[index] e.g PizzaList[1], order Quantity, and meal size.
-//Alternatively I create each individual tile and create a list of tiles.

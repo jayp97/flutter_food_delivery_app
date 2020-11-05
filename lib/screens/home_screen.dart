@@ -1,3 +1,4 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/models/food_model.dart';
 import 'package:flutter_food_delivery_app/widgets/food_carousel.dart';
@@ -17,21 +18,30 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  List<FoodModel> foodCarousel() {
-    if (Provider.of<Data>(context).selectedFood == Food.all) {
-      print(Provider.of<Data>(context).selectedFood);
-      return pizzaList;
-    } else if (Provider.of<Data>(context).selectedFood == Food.pizza) {
-      return pizzaList;
-    } else if (Provider.of<Data>(context).selectedFood == Food.burger) {
-      return burgerList;
-    } else
-      return friesList;
-  }
+  // List<FoodModel> foodCarousel() {
+  //   if (Provider.of<Data>(context).selectedFood == Food.search) {
+  //     return pizzaList;
+  //   } else if (Provider.of<Data>(context).selectedFood == Food.pizza) {
+  //     return pizzaList;
+  //   } else if (Provider.of<Data>(context).selectedFood == Food.burger) {
+  //     return burgerList;
+  //   } else
+  //     return friesList;
+  // }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<Data>(context, listen: false)
+          .filteredFoodListMaker(EnumToString.convertToString(Food.pizza));
     });
   }
 
@@ -46,7 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
           MenuBarCarousel(),
           SizedBox(height: 15.0),
           // foodCarousel(),
-          FoodCarousel(foodList: foodCarousel())
+          // FoodCarousel(foodList: foodCarousel())
+          FoodCarousel(foodList: Provider.of<Data>(context).filteredFoodItems),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

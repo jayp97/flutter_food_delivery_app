@@ -3,6 +3,7 @@ import 'package:flutter_food_delivery_app/models/data_model.dart';
 import 'package:flutter_food_delivery_app/widgets/menu_tile.dart';
 import 'package:flutter_food_delivery_app/constants.dart';
 import 'package:provider/provider.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 
 class MenuBarCarousel extends StatefulWidget {
   @override
@@ -22,11 +23,12 @@ class _MenuBarCarouselState extends State<MenuBarCarousel> {
         children: <Widget>[
           SizedBox(width: 5.0),
           MenuTile(
-            tileTitle: 'All',
-            foodItem: Food.all,
+            tileTitle: 'Search',
+            foodItem: Food.search,
             onTap: () {
-              Provider.of<Data>(context, listen: false).changeFood(Food.all);
-              print(Provider.of<Data>(context, listen: false).selectedFood);
+              Provider.of<Data>(context, listen: false).changeFood(Food.search);
+              Provider.of<Data>(context, listen: false)
+                  .clearFilteredFoodItems();
             },
             selectedFoodItem: Provider.of<Data>(context).selectedFood,
           ),
@@ -35,6 +37,10 @@ class _MenuBarCarouselState extends State<MenuBarCarousel> {
             foodItem: Food.pizza,
             onTap: () {
               Provider.of<Data>(context, listen: false).changeFood(Food.pizza);
+              Provider.of<Data>(context, listen: false)
+                  .clearFilteredFoodItems();
+              Provider.of<Data>(context, listen: false).filteredFoodListMaker(
+                  EnumToString.convertToString(Food.pizza));
             },
             selectedFoodItem: Provider.of<Data>(context).selectedFood,
           ),
@@ -43,6 +49,10 @@ class _MenuBarCarouselState extends State<MenuBarCarousel> {
             foodItem: Food.burger,
             onTap: () {
               Provider.of<Data>(context, listen: false).changeFood(Food.burger);
+              Provider.of<Data>(context, listen: false)
+                  .clearFilteredFoodItems();
+              Provider.of<Data>(context, listen: false).filteredFoodListMaker(
+                  EnumToString.convertToString(Food.burger));
             },
             selectedFoodItem: Provider.of<Data>(context).selectedFood,
           ),
@@ -51,6 +61,10 @@ class _MenuBarCarouselState extends State<MenuBarCarousel> {
             foodItem: Food.fries,
             onTap: () {
               Provider.of<Data>(context, listen: false).changeFood(Food.fries);
+              Provider.of<Data>(context, listen: false)
+                  .clearFilteredFoodItems();
+              Provider.of<Data>(context, listen: false).filteredFoodListMaker(
+                  EnumToString.convertToString(Food.fries));
             },
             selectedFoodItem: Provider.of<Data>(context).selectedFood,
           ),

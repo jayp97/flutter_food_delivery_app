@@ -100,14 +100,14 @@ class CheckOutScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomBar(
-        // onTap: () {
-        //   Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => DummyScreen(),
-        //     ),
-        //   );
-        // },
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DummyScreen(),
+            ),
+          );
+        },
         title: "Place Order",
       ),
     );
