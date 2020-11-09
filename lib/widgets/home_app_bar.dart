@@ -6,6 +6,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'float_button.dart';
 
 class HomeAppBar extends StatelessWidget {
+  final Function onTap;
+
+  HomeAppBar({this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,11 +18,18 @@ class HomeAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Icon(
-            FontAwesomeIcons.bars,
-            size: 30.0,
+          GestureDetector(
+            onTap: onTap,
+            child: Icon(
+              FontAwesomeIcons.bars,
+              size: 30.0,
+            ),
           ),
-          AppLogo(padding: 36.0),
+          AppLogo(
+            fontSize: 40.0,
+            padding: 36.0,
+            color: Theme.of(context).primaryColor,
+          ),
           Padding(
             padding: EdgeInsets.only(right: 1.0),
             child: ShoppingCartButton(

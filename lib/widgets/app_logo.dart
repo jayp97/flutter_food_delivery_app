@@ -4,8 +4,10 @@ import 'package:bordered_text/bordered_text.dart';
 
 class AppLogo extends StatelessWidget {
   final double padding;
+  final Color color;
+  final double fontSize;
 
-  AppLogo({this.padding});
+  AppLogo({this.padding, this.color, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,9 @@ class AppLogo extends StatelessWidget {
           child: Text(
             'YUM YUM',
             style: TextStyle(
-              fontSize: 40.0,
+              fontSize: fontSize,
               fontFamily: 'Itim',
-              color: Theme.of(context).primaryColor,
+              color: color,
               fontWeight: FontWeight.bold,
             ),
           ),
